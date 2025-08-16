@@ -48,5 +48,6 @@ function showTip() {
 }
 function toggleMenu() {
   document.querySelector("nav ul").classList.toggle("show");
+  document.querySelector(".menu-toggle").classList.toggle("active");
 }
 

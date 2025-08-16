@@ -58,66 +58,81 @@ footer {
   padding: 1rem;
   background: #8d99ae;
   color: white;
-  /* 🔹 Dropdown Menu for Mobile */
+}
+/* 🔹 Dropdown Menu for Mobile */
+/* --- Hamburger Icon --- */
 .menu-toggle {
-  font-size: 1.8rem;
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   cursor: pointer;
-  display: none; /* hidden on desktop */
+  z-index: 1100; /* stays on top of dropdown */
+}
+
+.menu-toggle span {
+  display: block;
+  height: 4px;
+  background: white;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+/* --- Animate to "X" --- */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+/* Responsive navbar */
+/* 🔹 Hamburger icon always visible */
+
+
+/* 🔹 Hide nav links by default */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+  position: absolute;
+  right: 1rem;
+  top: 4rem;
+  background: #2b2d42;
+  padding: 1rem;
+  border-radius: 8px;
+  display: none;
+  width: 200px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  animation: dropdownFade 0.3s ease;
+}
+
+nav ul.show {
+  display: flex;
+}
+
+nav ul li {
+  margin: 0.8rem 0;
+  text-align: center;
+}
+
+nav ul a {
   color: white;
-  margin-left: 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  display: block;
+  padding: 0.5rem 0;
 }
 
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    position: absolute;
-    right: 1rem;
-    top: 4rem;
-    background: #2b2d42;
-    padding: 1rem;
-    border-radius: 8px;
-    display: none;
-    width: 200px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    animation: dropdownFade 0.3s ease;
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  nav ul li {
-    margin: 0.8rem 0;
-    text-align: center;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-}
-
+/* 🔹 Dropdown fade animation */
 @keyframes dropdownFade {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-/* 🔹 3D Buttons */
-button {
-  background: #2b2d42;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  box-shadow: 0 6px #1a1b2c; /* Creates 3D depth */
-  transition: all 0.2s ease;
-}
-
-button:active {
-  transform: translateY(3px);
-  box-shadow: 0 3px #1a1b2c; /* Pressed effect */
-}
-
-
 }

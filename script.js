@@ -46,3 +46,7 @@ function showTip() {
   const randomIndex = Math.floor(Math.random() * tips.length);
   document.getElementById("tipText").textContent = tips[randomIndex];
 }
+function toggleMenu() {
+  document.querySelector("nav ul").classList.toggle("show");
+}
+

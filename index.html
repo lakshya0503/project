@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Focus Defender</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Focus Defender</h1>
+    <nav>
+      <ul>
+        <li><a href="#tracker">Distraction Tracker</a></li>
+        <li><a href="#diary">Dopamine Diary</a></li>
+        <li><a href="#focus">Focus Sessions</a></li>
+        <li><a href="#tips">Mindful Tips</a></li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Reclaim Your Focus</h2>
+    <p>Track distractions, break dopamine loops, and take control of your digital habits.</p>
+  </section>
+
+  <section id="tracker" class="feature-section">
+    <h2>📊 Distraction Tracker</h2>
+    <p>Monitor app usage and track attention-draining habits.</p>
+    <button onclick="trackDistraction()">Simulate Tracking</button>
+    <p id="tracker-output"></p>
+  </section>
+
+  <section id="diary" class="feature-section">
+    <h2>📓 Dopamine Diary</h2>
+    <p>Log how you feel after using apps to find patterns in mood and screen time.</p>
+    <input type="text" id="diaryInput" placeholder="How do you feel after 30 mins of TikTok?">
+    <button onclick="logDiary()">Log Entry</button>
+    <ul id="diaryEntries"></ul>
+  </section>
+
+  <section id="focus" class="feature-section">
+    <h2>⏱️ Focus Sessions</h2>
+    <p>Start a Pomodoro-style timer to protect your attention.</p>
+    <button onclick="startTimer()">Start 25-min Focus Session</button>
+    <p id="timerDisplay"></p>
+  </section>
+
+  <section id="tips" class="feature-section">
+    <h2>🧘 Mindful Tips</h2>
+    <p id="tipText">Click for a random mindful tip</p>
+    <button onclick="showTip()">Get Tip</button>
+  </section>
+
+  <section id="community" class="feature-section">
+    <h2>👥 Community Support</h2>
+    <p>Share your goals and connect with others on the same journey.</p>
+    <textarea placeholder="What's your digital goal today?"></textarea>
+    <button>Share</button>
+  </section>
+
+  <footer>
+    <p>Focus Defender © 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

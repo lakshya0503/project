@@ -1,70 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Focus Defender</title>
-  <link rel="stylesheet" href="style.css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Algorithm Transparency Lab</title>
+	<meta name="description" content="Interactive demo showing model score, feature contributions, and transparency report.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-  <h1>Focus Defender</h1>
-  <nav>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <ul>
-      <li><a href="#tracker">Distraction Tracker</a></li>
-      <li><a href="#diary">Dopamine Diary</a></li>
-      <li><a href="#focus">Focus Sessions</a></li>
-      <li><a href="#tips">Mindful Tips</a></li>
-      <li><a href="#community">Community</a></li>
-    </ul>
-  </nav>
-</header>
+	<header class="app-header">
+		<div class="brand">
+			<div class="logo">🔍</div>
+			<h1>Algorithm Transparency Lab</h1>
+		</div>
+		<div class="header-actions">
+			<button id="theme-toggle" class="btn secondary" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+		</div>
+	</header>
 
-  <section class="hero">
-    <h2>Reclaim Your Focus</h2>
-    <p>Track distractions, break dopamine loops, and take control of your digital habits.</p>
-  </section>
+	<main class="container">
+		<section class="hero card">
+			<h2>See how inputs shape a decision</h2>
+			<p>Adjust the inputs on the left to see the score and a breakdown of each feature's contribution. Download a transparency report that explains the decision in plain language.</p>
+		</section>
 
-  <section id="tracker" class="feature-section">
-    <h2>📊 Distraction Tracker</h2>
-    <p>Monitor app usage and track attention-draining habits.</p>
-    <button onclick="trackDistraction()">Simulate Tracking</button>
-    <p id="tracker-output"></p>
-  </section>
+		<section class="grid">
+			<div class="card" id="controls-card">
+				<div class="card-header">
+					<h3>Inputs</h3>
+					<div class="card-actions">
+						<button id="reset-btn" class="btn tertiary" title="Reset inputs">Reset</button>
+					</div>
+				</div>
+				<div id="feature-controls" class="controls"></div>
+			</div>
 
-  <section id="diary" class="feature-section">
-    <h2>📓 Dopamine Diary</h2>
-    <p>Log how you feel after using apps to find patterns in mood and screen time.</p>
-    <input type="text" id="diaryInput" placeholder="How do you feel after 30 mins of TikTok?">
-    <button onclick="logDiary()">Log Entry</button>
-    <ul id="diaryEntries"></ul>
-  </section>
+			<div class="card" id="explain-card">
+				<div class="card-header">
+					<h3>Decision & Explanation</h3>
+					<div class="card-actions">
+						<button id="download-report" class="btn" title="Download transparency report">Download report</button>
+					</div>
+				</div>
 
-  <section id="focus" class="feature-section">
-    <h2>⏱️ Focus Sessions</h2>
-    <p>Start a Pomodoro-style timer to protect your attention.</p>
-    <button onclick="startTimer()">Start 25-min Focus Session</button>
-    <p id="timerDisplay"></p>
-  </section>
+				<div class="score-panel">
+					<div class="score-value"><span id="score-number">--</span>/100</div>
+					<div class="decision" id="decision-badge">—</div>
+				</div>
 
-  <section id="tips" class="feature-section">
-    <h2>🧘 Mindful Tips</h2>
-    <p id="tipText">Click for a random mindful tip</p>
-    <button onclick="showTip()">Get Tip</button>
-  </section>
+				<div class="contribs">
+					<h4>Feature contributions</h4>
+					<div id="contrib-list" class="contrib-list"></div>
+				</div>
 
-  <section id="community" class="feature-section">
-    <h2>👥 Community Support</h2>
-    <p>Share your goals and connect with others on the same journey.</p>
-    <textarea placeholder="What's your digital goal today?"></textarea>
-    <button>Share</button>
-  </section>
+				<div class="explanation">
+					<h4>Why this score?</h4>
+					<p id="why-text">Adjust inputs to see a personalized explanation.</p>
+					<div class="thresholds" id="thresholds"></div>
+				</div>
+			</div>
+		</section>
 
-  <footer>
-    <p>Focus Defender © 2025</p>
-  </footer>
+		<section class="card transparency">
+			<h3>Transparency notes</h3>
+			<ul>
+				<li><strong>Model type:</strong> Simple linear scoring with normalized features.</li>
+				<li><strong>Contributions:</strong> Positive bars increase the score; negative bars decrease it.</li>
+				<li><strong>Thresholds:</strong> ≥ 70 = Approve, 40–69 = Review, < 40 = Deny.</li>
+				<li><strong>Limitations:</strong> Demo only. Not trained on real data.</li>
+			</ul>
+		</section>
+	</main>
 
-  <script src="script.js"></script>
+	<footer class="app-footer">
+		<p>Built for transparency. No backend. Your inputs stay in your browser.</p>
+	</footer>
+
+	<noscript>
+		<div class="noscript">This demo requires JavaScript to run.</div>
+	</noscript>
+
+	<script src="script.js"></script>
 </body>
 </html>
